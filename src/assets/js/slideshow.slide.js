@@ -122,17 +122,8 @@ Slideshow.Slide = function() {
 		{
 			var data = $(codeBlock).text();
 				data = data.replace(/(<([^>]+)>)/ig,"");
-				data = data.split(';');
 
-			for (var i = 0; i < data.length; i++) {
-				var parts = data[i].split(':');
-
-				if(parts[0] !== "" && parts[1] !== "")
-				{
-					log(parts[0] + "  " + parts[1]);
-					$(codeBlockTarget).css(String(parts[0]),String(parts[1]));
-				}
-			}
+			$(codeBlockTarget).attr('style', data);
 		}
 	};
 
