@@ -1,4 +1,4 @@
-/*! slideshow - v0.0.0 - 2013-08-12
+/*! slideshow - v0.0.0 - 2013-08-14
 * Copyright (c) 2013 ; Licensed  */
 var Slideshow = {};
 
@@ -75,7 +75,8 @@ Slideshow.Slide = function() {
 
 	var steps        = null;
 	var currentStep  = null;
-	var animspeed    = 300;
+	var animspeed    = 500;
+	var marginAmount = 0;
 
 	var codeBlock       = null;
 	var codeBlockType   = null;
@@ -83,6 +84,8 @@ Slideshow.Slide = function() {
 
 	this.init = function(element) {
 		myElement = element;
+
+		marginAmount = $(element).width()/2;
 
 		stepChildren = $(myElement).find('.step_children')[0];
 		steps = $(stepChildren).children().length;
@@ -143,7 +146,7 @@ Slideshow.Slide = function() {
 		$(myElement).css({
 			'display': 'block',
 			'opacity': '0',
-			'margin-left' : 400 * direction
+			'margin-left' : marginAmount * direction
 		});
 
 		$(myElement).animate({
@@ -164,15 +167,19 @@ Slideshow.Slide = function() {
 		}
 
 		$(myElement).removeClass('exit');
+		$(myElement).removeClass('right');
+		$(myElement).removeClass('left');
 	};
 
 	this.exit = function(direction, speed) {
 		var exitSpeed = speed !== undefined ? speed : animspeed;
+		var exitDir = direction < 0 ? 'left' : 'right';
 
 		$(myElement).addClass('exit');
+		$(myElement).addClass(exitDir);
 		$(myElement).animate({
 			'opacity': 0,
-			'margin-left' : -400 * direction
+			'margin-left' : (marginAmount*-1) * direction
 		}, exitSpeed, function(){
 			$(myElement).css({
 				'display': 'none'
@@ -220,7 +227,7 @@ Slideshow.SlideController = function() {
 			var slide = new Slideshow.Slide();
 			slide.init(slideElements[i]);
 			slides.push(slide);
-			slide.exit(0, 0);
+			slide.exit(-1, 0);
 		}
 
 		resize();
@@ -229,9 +236,7 @@ Slideshow.SlideController = function() {
 		$(window).keyup(function(e) { keyUp(e); });
 		$(window).resize(function() { resize(); });
 
-		hideAll();
-
-		setTimeout(startShow, 500);
+		startShow();
 	};
 
 	var startShow = function() {
@@ -305,13 +310,6 @@ Slideshow.SlideController = function() {
 	var updateHash = function(to) {
 		// plus one, becouse we dont't like #0 in the url
 		window.location.hash = Number(to) + 1;
-	};
-
-
-	var hideAll = function() {
-		for (var i = 0; i < slides.length; i++) {
-			slides[i].exit();
-		}
 	};
 
 

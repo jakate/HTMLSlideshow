@@ -24,7 +24,7 @@ Slideshow.SlideController = function() {
 			var slide = new Slideshow.Slide();
 			slide.init(slideElements[i]);
 			slides.push(slide);
-			slide.exit(0, 0);
+			slide.exit(-1, 0);
 		}
 
 		resize();
@@ -33,9 +33,7 @@ Slideshow.SlideController = function() {
 		$(window).keyup(function(e) { keyUp(e); });
 		$(window).resize(function() { resize(); });
 
-		hideAll();
-
-		setTimeout(startShow, 500);
+		startShow();
 	};
 
 	var startShow = function() {
@@ -109,13 +107,6 @@ Slideshow.SlideController = function() {
 	var updateHash = function(to) {
 		// plus one, becouse we dont't like #0 in the url
 		window.location.hash = Number(to) + 1;
-	};
-
-
-	var hideAll = function() {
-		for (var i = 0; i < slides.length; i++) {
-			slides[i].exit();
-		}
 	};
 
 

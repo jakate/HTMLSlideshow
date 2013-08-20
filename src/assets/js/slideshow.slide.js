@@ -10,7 +10,8 @@ Slideshow.Slide = function() {
 
 	var steps        = null;
 	var currentStep  = null;
-	var animspeed    = 300;
+	var animspeed    = 500;
+	var marginAmount = 0;
 
 	var codeBlock       = null;
 	var codeBlockType   = null;
@@ -18,6 +19,8 @@ Slideshow.Slide = function() {
 
 	this.init = function(element) {
 		myElement = element;
+
+		marginAmount = $(element).width()/2;
 
 		stepChildren = $(myElement).find('.step_children')[0];
 		steps = $(stepChildren).children().length;
@@ -78,7 +81,7 @@ Slideshow.Slide = function() {
 		$(myElement).css({
 			'display': 'block',
 			'opacity': '0',
-			'margin-left' : 400 * direction
+			'margin-left' : marginAmount * direction
 		});
 
 		$(myElement).animate({
@@ -99,15 +102,19 @@ Slideshow.Slide = function() {
 		}
 
 		$(myElement).removeClass('exit');
+		$(myElement).removeClass('right');
+		$(myElement).removeClass('left');
 	};
 
 	this.exit = function(direction, speed) {
 		var exitSpeed = speed !== undefined ? speed : animspeed;
+		var exitDir = direction < 0 ? 'left' : 'right';
 
 		$(myElement).addClass('exit');
+		$(myElement).addClass(exitDir);
 		$(myElement).animate({
 			'opacity': 0,
-			'margin-left' : -400 * direction
+			'margin-left' : (marginAmount*-1) * direction
 		}, exitSpeed, function(){
 			$(myElement).css({
 				'display': 'none'

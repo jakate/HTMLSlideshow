@@ -48,7 +48,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'src/assets/css/slideshow.scss': 'src/assets/scss/slideshow.scss'
+          'src/assets/css/slideshow.css': 'src/assets/scss/slideshow.scss'
         }
       }
     },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       },
       combine: {
         files: {
-          'build/assets/css/slideshow.min.css': ['src/assets/css/slideshow.scss']
+          'build/assets/css/slideshow.min.css': ['src/assets/css/slideshow.css']
         }
       }
     },
