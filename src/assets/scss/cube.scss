@@ -9,6 +9,7 @@ $origin: 50% 50% -1200px;
 
 .slides .slide {
 	display: block;
+	position: absolute !important;
 
 	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
 	-moz-transition: -moz-transform 0.5s, opacity 0.5s;
@@ -20,9 +21,6 @@ $origin: 50% 50% -1200px;
 	transform-style: preserve-3d;
 
 	-webkit-transform-origin: $origin;
-	-moz-transform-origin: $origin;
-	-o-transform-origin: $origin;
-	-ms-transform-origin: $origin;
 	transform-origin: $origin;
 }
 
@@ -62,9 +60,6 @@ $origin: 50% 50% -1200px;
 
 .slides.invert .slide {
 	-webkit-transform-origin: $invert_origin;
-	-moz-transform-origin: $invert_origin;
-	-o-transform-origin: $invert_origin;
-	-ms-transform-origin: $invert_origin;
 	transform-origin: $invert_origin;
 }
 
