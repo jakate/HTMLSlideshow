@@ -164,3 +164,9 @@ body {
 
 .progress_bar:hover {
   background: rgba(0, 0, 0, 0.2); }
+
+.example-control {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0; }
