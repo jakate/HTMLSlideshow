@@ -1,0 +1,63 @@
+body {
+	padding:0;
+	margin:0;
+	overflow: hidden;
+	display: block;
+}
+
+.container {
+	border: 1px solid blue;
+}
+
+.slides {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: block;
+	margin:0;
+	padding:0;
+	list-style-type: none;
+
+
+	.slide {
+		margin:0;
+		padding:0;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+
+		.slide_content {
+			display: block;
+			width: 960px;
+		}
+	}
+
+	.progress {
+		width: 100%;
+	}
+	.progress_bar {
+		text-align: right;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		min-width: 5%;
+
+		.progress_label {
+			padding: 5px 20px;
+		}
+	}
+}
+
+
+
+
+/* -----------------------------------------------------------
+
+	Clear floats
+
+----------------------------------------------------------- */
+.wrapper 		{ display: inline-block; }
+.wrapper:after 	{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+* html .wrapper { height: 1%; }
+.wrapper 		{ display: block; }
+.clear { clear: both; }

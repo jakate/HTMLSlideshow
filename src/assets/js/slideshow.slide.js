@@ -60,6 +60,7 @@ Slideshow.Slide = function() {
 
 
 	this.scale = function(tow, toh) {
+
 		$(myElement).css({
 			'width': tow,
 			'height': toh
@@ -78,17 +79,6 @@ Slideshow.Slide = function() {
 
 
 	this.enter = function(direction) {
-		$(myElement).css({
-			'display': 'block',
-			'opacity': '0',
-			'margin-left' : marginAmount * direction
-		});
-
-		$(myElement).animate({
-			'opacity': 1,
-			'margin-left': 0
-		}, animspeed);
-
 		// if slide has steps in it
 		if(stepChildren)
 		{
@@ -101,25 +91,24 @@ Slideshow.Slide = function() {
 			});
 		}
 
-		$(myElement).removeClass('exit');
-		$(myElement).removeClass('right');
-		$(myElement).removeClass('left');
+		$(myElement).css('visibility', 'visible');
+
+		$(myElement).addClass('front');
+
+		$(myElement).removeClass('previous');
+		$(myElement).removeClass('next');
 	};
 
 	this.exit = function(direction, speed) {
 		var exitSpeed = speed !== undefined ? speed : animspeed;
-		var exitDir = direction < 0 ? 'left' : 'right';
 
-		$(myElement).addClass('exit');
+		var exitDir = direction < 0 ? 'previous' : 'next';
+
+		$(myElement).removeClass('previous');
+		$(myElement).removeClass('front');
+		$(myElement).removeClass('next');
+
 		$(myElement).addClass(exitDir);
-		$(myElement).animate({
-			'opacity': 0,
-			'margin-left' : (marginAmount*-1) * direction
-		}, exitSpeed, function(){
-			$(myElement).css({
-				'display': 'none'
-			});
-		});
 	};
 
 

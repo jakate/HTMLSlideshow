@@ -1,0 +1,50 @@
+body {
+	background: #cdcdcd;
+	font-family: Helvetica Neue, Arial;
+}
+
+.slide_content {
+
+	h1 {
+		font-size: 9em;
+		line-height: 0.9em;
+	}
+	h2 {
+		font-size: 6em;
+		line-height: 0.9em;
+		margin: 0.2em 0;
+	}
+	p,li {
+		font-size: 1.5em;
+	}
+	li {
+		list-style-type: disc;
+	}
+
+	pre {
+		display: block;
+		float: none;
+		border: 2px solid #666;
+		background: #999;
+		text-align: left;
+		padding: 30px;
+		border-radius: 10px;
+		color: #fff;
+		font-size: 2em;
+		height: 100px;
+		overflow: auto;
+	}
+}
+
+.progress_bar {
+	background: rgba(0,0,0,0.1);
+	color: #cdcdcd;
+
+	.progress_label {
+		font-size: 10px;
+	}
+}
+
+.progress_bar:hover {
+	background: rgba(0,0,0,0.2);
+}

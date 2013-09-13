@@ -20,20 +20,23 @@ Slideshow.SlideController = function() {
 
 		var slideElements = $('.slide', 'body');
 
+		var tmpCurrentSlide = Number(window.location.hash.split('#').join('')) -1;
+
 		for (var i = 0; i < slideElements.length; i++) {
 			var slide = new Slideshow.Slide();
-			slide.init(slideElements[i]);
+				slide.init(slideElements[i]);
+				$(slideElements[i]).css('visibility','hidden');
+				slide.exit(tmpCurrentSlide-i, 0);
 			slides.push(slide);
-			slide.exit(-1, 0);
 		}
-
-		resize();
 
 		$(window).on('hashchange', function() { changeSlide(); });
 		$(window).keyup(function(e) { keyUp(e); });
 		$(window).resize(function() { resize(); });
 
 		startShow();
+
+		setTimeout(resize, 100);
 	};
 
 	var startShow = function() {
