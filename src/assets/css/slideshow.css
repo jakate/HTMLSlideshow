@@ -41,6 +41,18 @@ body {
     .slides .progress_bar .progress_label {
       padding: 5px 20px; }
 
+.slides.zoom-out .slide,
+.slides.zoom-out .left,
+.slides.zoom-out .right {
+  -webkit-transform: rotateY(0deg) translateZ(-2000px) !important;
+  -moz-transform: rotateY(0deg) translateZ(-2000px) !important;
+  -o-transform: rotateY(0deg) translateZ(-2000px) !important;
+  -ms-transform: rotateY(0deg) translateZ(-2000px) !important;
+  transform: rotateY(0deg) translateZ(-2000px) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  border: 3px solid #000; }
+
 /* -----------------------------------------------------------
 
 	Clear floats
@@ -65,10 +77,6 @@ body {
 .clear {
   clear: both; }
 
-.slides {
-  -webkit-perspective: 800px;
-  perspective: 800px; }
-
 .slides .slide {
   display: block;
   position: absolute !important;
@@ -76,13 +84,19 @@ body {
   -moz-transition: -moz-transform 0.5s, opacity 0.5s;
   -o-transition: -o-transform 0.5s, opacity 0.5s;
   -ms-transition: -ms-transform 0.5s, opacity 0.5s;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s; }
+
+.slides.cube {
+  -webkit-perspective: 500px;
+  perspective: 500px; }
+
+.slides.cube .slide {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transform-origin: 50% 50% -1200px;
   transform-origin: 50% 50% -1200px; }
 
-.slides .front {
+.slides.cube .front {
   -webkit-transform: rotateY(0deg) translateZ(0px);
   -moz-transform: rotateY(0deg) translateZ(0px);
   -o-transform: rotateY(0deg) translateZ(0px);
@@ -91,7 +105,7 @@ body {
   z-index: 10;
   opacity: 1; }
 
-.slides .next {
+.slides.cube .next {
   -webkit-transform: rotateY(-90deg) translateZ(0px);
   -moz-transform: rotateY(-90deg) translateZ(0px);
   -o-transform: rotateY(-90deg) translateZ(0px);
@@ -100,7 +114,7 @@ body {
   z-index: 5;
   opacity: 0; }
 
-.slides .previous {
+.slides.cube .previous {
   -webkit-transform: rotateY(90deg) translateZ(0px);
   -moz-transform: rotateY(90deg) translateZ(0px);
   -o-transform: rotateY(90deg) translateZ(0px);
@@ -110,23 +124,58 @@ body {
   opacity: 0; }
 
 /*  INVERTED STYLE  */
-.slides.invert .slide {
+.slides.cube.invert .slide {
   -webkit-transform-origin: 50% 50% 1200px;
   transform-origin: 50% 50% 1200px; }
 
-.slides.invert .next {
+.slides.cube.invert .next {
   -webkit-transform: rotateY(90deg) translateZ(0px);
   -moz-transform: rotateY(90deg) translateZ(0px);
   -o-transform: rotateY(90deg) translateZ(0px);
   -ms-transform: rotateY(90deg) translateZ(0px);
   transform: rotateY(90deg) translateZ(0px); }
 
-.slides.invert .previous {
+.slides.cube.invert .previous {
   -webkit-transform: rotateY(-90deg) translateZ(0px);
   -moz-transform: rotateY(-90deg) translateZ(0px);
   -o-transform: rotateY(-90deg) translateZ(0px);
   -ms-transform: rotateY(-90deg) translateZ(0px);
   transform: rotateY(-90deg) translateZ(0px); }
+
+.slides.swoop {
+  -webkit-perspective: 500px;
+  perspective: 500px; }
+
+.slides.swoop .slide {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.slides.swoop .front {
+  -webkit-transform: rotateY(0deg) translateZ(0px);
+  -moz-transform: rotateY(0deg) translateZ(0px);
+  -o-transform: rotateY(0deg) translateZ(0px);
+  -ms-transform: rotateY(0deg) translateZ(0px);
+  transform: rotateY(0deg) translateZ(0px);
+  z-index: 10;
+  opacity: 1; }
+
+.slides.swoop .next {
+  -webkit-transform: rotateY(90deg) translateZ(-1200px);
+  -moz-transform: rotateY(90deg) translateZ(-1200px);
+  -o-transform: rotateY(90deg) translateZ(-1200px);
+  -ms-transform: rotateY(90deg) translateZ(-1200px);
+  transform: rotateY(90deg) translateZ(-1200px);
+  z-index: 5;
+  opacity: 0; }
+
+.slides.swoop .previous {
+  -webkit-transform: rotateY(-90deg) translateZ(-1200px);
+  -moz-transform: rotateY(-90deg) translateZ(-1200px);
+  -o-transform: rotateY(-90deg) translateZ(-1200px);
+  -ms-transform: rotateY(-90deg) translateZ(-1200px);
+  transform: rotateY(-90deg) translateZ(-1200px);
+  z-index: 6;
+  opacity: 0; }
 
 body {
   background: #cdcdcd;

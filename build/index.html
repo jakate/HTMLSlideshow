@@ -11,12 +11,18 @@
 <body>
 
 	<div class='example-control'>
-		<a href='#' class='toggle-animation'>Invert "cube"</a>
+		<form class='toggle-animation' action='' method=''>
+			<select name='anim-style'>
+				<option value='cube'>Cube</option>
+				<option value='cube invert'>Cube invert</option>
+				<option value='swoop'>Swoop</option>
+			</select>
+		</form>
 	</div>
 
 	<div class='container wrapper'>
 
-		<ul class='slides invert wrapper'>
+		<ul class='slides cube wrapper'>
 
 			<li class='slide'>
 				<div class='slide_content'>

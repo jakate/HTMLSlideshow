@@ -1,0 +1,71 @@
+
+$invert_origin: 50% 50% 1200px;
+$origin: 50% 50% -1200px;
+
+.slides.cube {
+	-webkit-perspective: 500px;
+	perspective: 500px;
+}
+
+
+.slides.cube .slide {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+.slides.cube .front {
+	-webkit-transform: rotateY( 0deg ) translateZ( 0px );
+	-moz-transform: rotateY( 0deg ) translateZ( 0px );
+	-o-transform: rotateY( 0deg ) translateZ( 0px );
+	-ms-transform: rotateY( 0deg ) translateZ( 0px );
+	transform: rotateY( 0deg ) translateZ( 0px );
+	z-index: 10;
+	opacity: 1;
+}
+
+.slides.cube .next {
+	-webkit-transform: rotateY( -90deg ) translateZ( 0px );
+	-moz-transform: rotateY( -90deg ) translateZ( 0px );
+	-o-transform: rotateY( -90deg ) translateZ( 0px );
+	-ms-transform: rotateY( -90deg ) translateZ( 0px );
+	transform: rotateY( -90deg ) translateZ( 0px );
+	z-index: 5;
+	opacity: 0;
+}
+
+.slides.cube .previous {
+	-webkit-transform: rotateY( 90deg ) translateZ( 0px );
+	-moz-transform: rotateY( 90deg ) translateZ( 0px );
+	-o-transform: rotateY( 90deg ) translateZ( 0px );
+	-ms-transform: rotateY( 90deg ) translateZ( 0px );
+	transform: rotateY( 90deg ) translateZ( 0px );
+	z-index: 6;
+	opacity: 0;
+}
+
+
+
+/*  INVERTED STYLE  */
+.slides.cube.invert .slide {
+	-webkit-transform-origin: $invert_origin;
+	transform-origin: $invert_origin;
+}
+
+.slides.cube.invert .next {
+	-webkit-transform: rotateY( 90deg ) translateZ( 0px );
+	-moz-transform: rotateY( 90deg ) translateZ( 0px );
+	-o-transform: rotateY( 90deg ) translateZ( 0px );
+	-ms-transform: rotateY( 90deg ) translateZ( 0px );
+	transform: rotateY( 90deg ) translateZ( 0px );
+}
+
+.slides.cube.invert .previous {
+	-webkit-transform: rotateY( -90deg ) translateZ( 0px );
+	-moz-transform: rotateY( -90deg ) translateZ( 0px );
+	-o-transform: rotateY( -90deg ) translateZ( 0px );
+	-ms-transform: rotateY( -90deg ) translateZ( 0px );
+	transform: rotateY( -90deg ) translateZ( 0px );
+}

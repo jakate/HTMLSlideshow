@@ -59,6 +59,22 @@ body {
 
 
 
+.slides.zoom-out .slide,
+.slides.zoom-out .left,
+.slides.zoom-out .right {
+	-webkit-transform: rotateY( 0deg ) translateZ( -2000px ) !important;
+	-moz-transform: rotateY( 0deg ) translateZ( -2000px ) !important;
+	-o-transform: rotateY( 0deg ) translateZ( -2000px ) !important;
+	-ms-transform: rotateY( 0deg ) translateZ( -2000px ) !important;
+	transform: rotateY( 0deg ) translateZ( -2000px ) !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+	border: 3px solid #000;
+}
+
+
+
+
 /* -----------------------------------------------------------
 
 	Clear floats

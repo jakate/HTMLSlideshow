@@ -1,0 +1,40 @@
+.slides.swoop {
+	-webkit-perspective: 500px;
+	perspective: 500px;
+}
+
+.slides.swoop .slide {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+.slides.swoop .front {
+	-webkit-transform: rotateY( 0deg ) translateZ( 0px );
+	-moz-transform: rotateY( 0deg ) translateZ( 0px );
+	-o-transform: rotateY( 0deg ) translateZ( 0px );
+	-ms-transform: rotateY( 0deg ) translateZ( 0px );
+	transform: rotateY( 0deg ) translateZ( 0px );
+	z-index: 10;
+	opacity: 1;
+}
+
+.slides.swoop .next {
+	-webkit-transform: rotateY( 90deg ) translateZ( -1200px );
+	-moz-transform: rotateY( 90deg ) translateZ( -1200px );
+	-o-transform: rotateY( 90deg ) translateZ( -1200px );
+	-ms-transform: rotateY( 90deg ) translateZ( -1200px );
+	transform: rotateY( 90deg ) translateZ( -1200px );
+	z-index: 5;
+	opacity: 0;
+}
+
+.slides.swoop .previous {
+	-webkit-transform: rotateY( -90deg ) translateZ( -1200px );
+	-moz-transform: rotateY( -90deg ) translateZ( -1200px );
+	-o-transform: rotateY( -90deg ) translateZ( -1200px );
+	-ms-transform: rotateY( -90deg ) translateZ( -1200px );
+	transform: rotateY( -90deg ) translateZ( -1200px );
+	z-index: 6;
+	opacity: 0;
+}

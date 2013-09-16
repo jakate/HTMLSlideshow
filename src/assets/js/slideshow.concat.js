@@ -1,4 +1,4 @@
-/*! slideshow - v0.0.0 - 2013-09-13
+/*! slideshow - v0.0.0 - 2013-09-16
 * Copyright (c) 2013 ; Licensed  */
 var Slideshow = {};
 
@@ -202,6 +202,7 @@ Slideshow.SlideController = function() {
 	var currentSlide  = 0;
 
 	var slides        = [];
+	var slidesElement = [];
 
 
 	var slideshow     = null;
@@ -209,6 +210,8 @@ Slideshow.SlideController = function() {
 	this.init = function(parent) {
 
 		slideshow = parent;
+
+		slidesElement = $('.slides');
 
 		var slideElements = $('.slide', 'body');
 
@@ -226,9 +229,8 @@ Slideshow.SlideController = function() {
 		$(window).keyup(function(e) { keyUp(e); });
 		$(window).resize(function() { resize(); });
 
-		startShow();
-
 		setTimeout(resize, 100);
+		setTimeout(startShow, 200);
 	};
 
 	var startShow = function() {
@@ -236,6 +238,10 @@ Slideshow.SlideController = function() {
 			updateHash(currentSlide);
 		} else {
 			changeSlide();
+		}
+
+		for (var i = 0; i < slides.length; i++) {
+			slides[i].scale(windowWidth, windowHeight);
 		}
 	};
 
@@ -304,6 +310,42 @@ Slideshow.SlideController = function() {
 		window.location.hash = Number(to) + 1;
 	};
 
+	var zoomOut = function() {
+
+		var ML = 0;
+		if($(slidesElement).hasClass('zoom-out'))
+		{
+			$(slidesElement).removeClass('zoom-out');
+
+			$(slidesElement).find('.slide').each(function(){
+				$(this).css({
+					'margin-left': 0
+				});
+			});
+		}
+		else
+		{
+			$(slidesElement).addClass('zoom-out');
+
+			$(slidesElement).find('.slide').each(function(index){
+				$(this).css({
+					'margin-left': ML
+				});
+
+				ML+= $(this).width();
+
+				/*if(currentSlide == index)
+				{
+					//$(slidesElement).css('margin-left', ML * 0.2);
+					$(slidesElement).css('margin-left', ML*-1 / 2);
+					$(slidesElement).css('overflow', 'visible');
+					$(slidesElement).css('width', '100%');
+					$(slidesElement).css('position', 'relative');
+				}*/
+			});
+		}
+	};
+
 
 	/*   Events    */
 
@@ -319,7 +361,13 @@ Slideshow.SlideController = function() {
 		if($('body').find('*:focus')[0]) return;
 
 		var pressed = e.keyCode;
+
+		//log("pressed: " + pressed);
+
 		switch(pressed){
+			case 81 :
+				zoomOut();
+			break;
 			case 39 :
 				nextSlide();
 			break;
